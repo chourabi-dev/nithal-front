@@ -1,0 +1,66 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Ajouter une commande</h1>
+ 
+    <p class="mb-4">
+        <a routerLink="/dashboard/home/admin-colis-request" class="btn btn-secondary">Back</a>
+    </p>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Ajouter une commande</h6>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="add" (ngSubmit)="addNow()" >
+     
+  
+
+                <!--<div class="form-group">
+                    <label for="">Poid(kg)</label>
+                    <input type="number" placeholder="" class="form-control" formControlName="poids">
+                </div> -->
+                 
+
+                <div class="form-group">
+                    <label for="">Livreur</label>
+                    <select class="form-control" formControlName="id_livreur">
+                        <option [value]="l.id" *ngFor="let l of livreurs">{{l.name}}</option> 
+                    </select>
+
+                    
+                    <label for="">Vehicule</label>
+                    <select class="form-control" formControlName="id_vehicule">
+                        <option [value]="l.id" *ngFor="let l of vehicules">{{l.mark}} {{l.model}} - {{l.registrationPlate}}</option> 
+                    </select>
+
+                    <label for="">Description</label>
+                    <textarea class="form-control" formControlName="description"></textarea>
+
+                    
+                    
+                </div>   
+ 
+ 
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" [disabled]="! add.valid">Ajouter </button>
+                </div>
+
+
+                <div class="mt-3 alert alert-success" *ngIf="successMessage != '' ">
+                    {{successMessage}}
+                </div>
+                
+                
+                
+                
+                
+            </form>
+
+        </div>
+
+    </div>
+</div>

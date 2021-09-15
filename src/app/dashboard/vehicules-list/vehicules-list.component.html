@@ -1,0 +1,103 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Vehicules List</h1>
+    <p class="mb-4">
+        The table down below show a list of all vehicules in the park.
+    </p>
+    <p class="mb-4">
+        <a routerLink="/dashboard/home/vehicules-add" class="btn btn-primary">Ajouter</a>
+    </p>
+    
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Vehicules List</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <table class="table">
+                    <thead>
+                        <tr> 
+
+                            <th>#</th>
+                            <th>Marque</th>
+                            <th>Model</th>
+                            <th>Immatriculation</th>
+                            <th>Status</th>
+                            <th>gamme</th>
+                            <th>poids Max</th>
+                            <th>hauteur </th>
+                            <th>largeur </th>
+                            
+                            
+                            <th>Add date</th>
+                            <th>Actions</th>
+                            
+                            
+                            
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+
+                        <tr *ngFor="let v of vehicules">
+                            <td>
+                                {{v.id}}
+                            </td>
+                            <td>
+                                {{v.mark}}
+                            </td>
+                            <td>
+                                {{v.model}}
+                            </td>
+                            <td>
+                                {{ v.registrationPlate }}
+                            </td>
+                            <td>
+                                <span class="badge badge-success" *ngIf="v.isOut == false">disponible</span>
+                                <span class="badge badge-warning" *ngIf="v.isOut == true">en mission</span>
+                                
+
+                                
+                            </td>
+                            <td>
+                                {{ v.gamme }}
+                            </td>
+                            <td>
+                                {{ v.poidsMax }}
+                            </td>
+                            <td>
+                                {{ v.hauteurV }}
+                            </td>
+                            <td>
+                                {{ v.largeurV }}
+                            </td>
+
+
+                            
+
+
+                            <td>
+                                {{ v.date }}
+                            </td>
+                            <td>
+                                <button class="btn-sm btn btn-info" style="margin-right: 10px;" [routerLink]="'/dashboard/home/vehicules-edit/'+v.id">Edit</button>
+                                <button class="btn-sm btn btn-danger" (click)="deleteVehicule(v.id)" >Delete</button>
+                                
+                                
+                            </td>
+                        </tr>
+                        
+                        
+                        
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

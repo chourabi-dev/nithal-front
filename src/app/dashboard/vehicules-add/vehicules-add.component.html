@@ -1,0 +1,71 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Add new Vehicule</h1>
+    <p class="mb-4">
+        TYou can add as many vehicules as you want the park.
+    </p>
+    <p class="mb-4">
+        <a routerLink="/dashboard/home/vehicules" class="btn btn-secondary">Back</a>
+    </p>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Add new vehicule</h6>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="vehiculeForm" (ngSubmit)="addNow()" >
+                <div class="form-group">
+                    <label for="">Marque</label>
+                    <input type="text" placeholder="vehicule mark" class="form-control" formControlName="mark">
+                </div>
+                <div class="form-group">
+                    <label for="">Model</label>
+                    <input type="text" placeholder="vehicule model" class="form-control" formControlName="model">
+                </div>
+                <div class="form-group">
+                    <label for="">Immatriculation </label>
+                    <input type="text" placeholder="(***TN****)" class="form-control" formControlName="registrationPlate">
+                </div>
+                <div class="form-group">
+                    <label for="">Date MPC  </label>
+                    <input type="date" placeholder="" class="form-control" formControlName="date">
+                </div>
+                <div class="form-group">
+                    <label for="">Note  </label>
+                    <input type="text" placeholder="Note..." class="form-control" formControlName="note">
+                </div>
+                <div class="form-group">
+                    <label for="">hauteur (m)  </label>
+                    <input type="text" placeholder="Note..." class="form-control" formControlName="hauteurV">
+                </div>
+                <div class="form-group">
+                    <label for="">largeur  (m) </label>
+                    <input type="text" placeholder="Note..." class="form-control" formControlName="largeurV">
+                </div>
+                <div class="form-group">
+                    <label for="">poids Max (kg) </label>
+                    <input type="text" placeholder="Note..." class="form-control" formControlName="poidsMax">
+                </div>
+                <div class="form-group">
+                    <label for="">gamme  </label>
+                    <input type="text" placeholder="Note..." class="form-control" formControlName="gamme">
+                </div>
+ 
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" [disabled]="! vehiculeForm.valid">Create now </button>
+                </div>
+                
+                
+                
+                
+                
+            </form>
+
+        </div>
+
+    </div>
+</div>

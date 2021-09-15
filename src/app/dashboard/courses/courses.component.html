@@ -1,0 +1,52 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Mes courses</h1>
+    <p class="mb-4">
+        Le tableau ci-dessous montre une liste de tous vos courses.
+    </p>
+  
+    <div class="row">
+        <div class="col-sm-6 col-md-4" *ngFor="let c of courses">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">N° Livraison :  {{c.id}}</h6>
+                </div>
+                <div class="card-body">
+                    <h6>Colis :</h6>
+                    <hr>
+                     <p>
+                        <strong>N° colis :</strong> {{c.colis.id}}<br>
+                        <strong>Type : </strong>{{c.colis.type}}<br>
+                        <strong>Urgence : </strong>{{c.colis.urgence}}<br>
+                        <strong>poids : </strong> {{c.colis.poids}} kg
+                         
+                     </p>
+
+
+                     <h6>Vehicule : <strong>{{c.vehicule.mark}} {{c.vehicule.model}}</strong> </h6>
+                    <hr>
+                     <p>
+                          Immatriculation : <strong>{{c.vehicule.registrationPlate}}</strong> 
+                     </p>
+
+
+                     <h6>Trajet :</h6>
+                    <hr>
+                     <p>
+                         <strong>Vers : {{c.colis.villeDistinataire}}</strong> <br>
+                         <strong>code postal : {{c.colis.codePostalDistinataire}}</strong> <br>
+                         <strong>Gouvernorat : {{c.colis.govDistinataire}}</strong> <br>
+                         <strong>Adresse : {{c.colis.adrExpediteur}}</strong> <br>
+                         
+                     </p>
+
+
+                </div>
+                <div class="card-footer" *ngIf="c.colis.etat !=  2">
+                    <button class="btn btn-success" (click)="cloture(c.colis.id)" > <i class="fas fa-check"></i> Terminier</button>
+                </div>
+        
+            </div>
+        </div>
+    </div>

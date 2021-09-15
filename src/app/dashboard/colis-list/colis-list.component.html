@@ -1,0 +1,124 @@
+<div class="container-fluid">
+
+
+    
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Mes colis</h1>
+    <p class="mb-4">
+        Le tableau ci-dessous montre une liste de tous vos colis.
+    </p>
+    <p class="mb-4">
+        <a routerLink="/dashboard/home/colis-add" class="btn btn-primary">Ajouter</a>
+    </p>
+    
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Vehicules List</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <table class="table">
+                    <thead>
+                        <tr> 
+  
+                            <th>#</th>
+                            <th>Details</th>
+                            <th>Collect</th>
+                            <th>type</th>
+                            <th>urgence</th>
+                            <th>Date Creation</th>
+                            <th>Etat</th>
+                             
+                            <th>Adresse Expediteur</th>
+                            <th>Adresse Distinataire</th>
+                            <th>Ville Distinataire</th>
+                            <th>Code Postal Distinataire</th>
+                            <th>Gouvernorat Distinataire</th>
+                            <th>Description</th>
+                            
+                            
+                            <th>Actions</th>
+                            
+                            
+                            
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+
+                        <tr *ngFor="let c of colis">
+                            <td>
+                                {{c.id}}
+                            </td>
+                            <td>
+                                {{c.poids}} kg <br> 
+                                {{c.hauteur}} cm <br> 
+                                {{c.largeur}} cm
+
+                            </td> 
+
+                            <td>
+                                <span  *ngIf="c.collect == true " class="badge bg-warning text-white">oui</span>
+                                <span *ngIf="c.collect == false " class="badge bg-success text-white">non</span>
+                            </td>
+                            <td>
+                                <span class="badge bg-primary text-white">{{c.type}}</span>
+                            </td>
+                            <td>
+                                <span class="badge bg-primary text-white">{{c.urgence}}</span> 
+                            </td>
+                            <td>
+                                {{c.dateCreation | date:'medium'}}
+                            </td>
+                            <td>
+                                <span *ngIf="c.etat == 0 " class="badge bg-primary text-white">en attente</span>
+                                <span *ngIf="c.etat == 1 " class="badge bg-warning text-white">en cours</span>
+                                <span *ngIf="c.etat == 2 " class="badge bg-success text-white">livré</span>
+                                
+                            </td>
+
+                            
+                            <td>
+                                {{ c.adrExpediteur }}
+                            </td>
+                            <td>
+                                {{ c.adrDistinataire }}
+                            </td>
+                            <td>
+                                {{ c.villeDistinataire }}
+                            </td>
+                            <td>
+                                {{ c.codePostalDistinataire }}
+                            </td>
+                            <td>
+                                {{ c.govDistinataire }}
+                            </td>
+                            <td>
+                                {{ c.description }}
+                            </td> 
+
+                            <td>
+                                <!--<button class="btn-sm btn btn-info mb-3" style="margin-right: 10px;" [routerLink]="'/dashboard/home/colis-edit/'+c.id">Modifier</button>-->
+                                <button *ngIf="c.etat == 0 " class="btn-sm btn btn-danger" (click)="deleteColis(c.id)" >Supprimer</button> 
+
+                                <button class="btn-sm btn btn-info mt-3" (click)="printInvoice(c.id)" >Imprimer reçu</button>
+
+                                <button *ngIf="c.etat == 1 " class="btn-sm btn btn-info mt-3" [routerLink]="'/dashboard/home/colis/track/'+c.id" >Tracké</button>
+                                
+                            </td>
+                        </tr>
+                        
+                        
+                        
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
